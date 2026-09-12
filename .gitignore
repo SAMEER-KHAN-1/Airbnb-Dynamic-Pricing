@@ -1,0 +1,22 @@
+# Claude Code / AI assistant files — keep out of the repo
+CLAUDE.md
+.claude/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Raw / large datasets — document download source in README instead
+Dataset/
+data/raw/
+
+# Model artifacts (can be large; version separately if needed)
+models/*.pkl
+models/*.joblib
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db

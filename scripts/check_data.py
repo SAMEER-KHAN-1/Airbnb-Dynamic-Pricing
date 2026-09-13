@@ -1,8 +1,5 @@
 import pandas as pd
 
-# quick check on the reviews data - want to see if the same reviewer
-# shows up more than once. if barely anyone does, collaborative filtering
-# won't have much to learn from
 reviews = pd.read_csv("Dataset/reviews.csv.gz")
 print("total reviews:", len(reviews))
 

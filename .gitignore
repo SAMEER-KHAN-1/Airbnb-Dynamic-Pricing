@@ -13,7 +13,11 @@ __pycache__/
 Dataset/
 data/raw/
 
-# Model artifacts (can be large; version separately if needed)
+# Processed data / interactions are derived from Dataset/ via src/data_prep.py
+# and src/interaction_matrix.py — regenerate, don't commit
+data/processed/
+
+# Model artifacts (can be large; regenerate via src/svd_recommender.py and src/content_matcher.py)
 models/*.pkl
 models/*.joblib
 

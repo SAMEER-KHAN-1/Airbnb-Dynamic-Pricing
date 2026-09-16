@@ -48,16 +48,22 @@ mode = st.radio(
 if mode == "An existing listing (by ID)":
     sample_ids = listings_df["id"].sample(5, random_state=1).tolist()
     st.caption(f"Example listing IDs from the dataset: {sample_ids}")
-    listing_id = st.number_input("Listing ID", min_value=0, value=int(sample_ids[0]), step=1)
+    # Text input, not number_input: many listing IDs exceed JavaScript's
+    # safe integer bound (2^53 - 1), which number_input's JS widget can't hold.
+    listing_id_raw = st.text_input("Listing ID", value=str(sample_ids[0]))
 
     if st.button("Get recommended price", type="primary"):
-        if listing_id not in listings_df["id"].values:
-            st.error("That listing ID isn't in the cleaned dataset.")
+        if not listing_id_raw.strip().isdigit():
+            st.error("Listing ID must be a whole number.")
         else:
-            result = pricing_service.recommend_price_for_listing(
-                svd_algo, listings_df, int(listing_id)
-            )
-            st.session_state["result"] = result
+            listing_id = int(listing_id_raw.strip())
+            if listing_id not in listings_df["id"].values:
+                st.error("That listing ID isn't in the cleaned dataset.")
+            else:
+                result = pricing_service.recommend_price_for_listing(
+                    svd_algo, listings_df, listing_id
+                )
+                st.session_state["result"] = result
 
 else:
     col1, col2 = st.columns(2)

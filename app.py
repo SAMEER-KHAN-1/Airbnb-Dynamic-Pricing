@@ -74,10 +74,10 @@ else:
         neighbourhood_group = st.selectbox(
             "Borough", ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"]
         )
-        accommodates = st.slider("Accommodates (guests)", 1, 16, 2)
-        bedrooms = st.slider("Bedrooms", 0, 8, 1)
+        accommodates = st.number_input("Accommodates (guests)", min_value=1, max_value=16, value=2, step=1)
+        bedrooms = st.number_input("Bedrooms", min_value=0, max_value=8, value=1, step=1)
     with col2:
-        bathrooms = st.slider("Bathrooms", 0.0, 6.0, 1.0, step=0.5)
+        bathrooms = st.number_input("Bathrooms", min_value=0, max_value=6, value=1, step=1)
         minimum_nights = st.number_input("Minimum nights", min_value=1, value=2)
         number_of_reviews = st.number_input("Number of reviews", min_value=0, value=0)
         review_scores_rating = st.slider("Review score rating", 1.0, 5.0, 4.8, step=0.01)

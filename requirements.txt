@@ -1,0 +1,6 @@
+fastapi>=0.110
+numpy>=1.26
+pydantic>=2.6
+pytest>=8.0
+requests>=2.31
+uvicorn>=0.27

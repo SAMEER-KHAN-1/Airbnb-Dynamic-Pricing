@@ -1,0 +1,9 @@
+CLAUDE.md
+.claude/
+.gemini/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+venv/
+.env
+dataset/reviews.csv.gz
